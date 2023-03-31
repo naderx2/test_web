@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test
+{% endblock %}
+
+{% block body %}
+    <div class="card card-outline card-info" style="margin-left: 10px;width: 100%">
+        <div class="card-header">
+            <h3 class="card-title">
+                Liste des Commandes traités
+            </h3>
+        </div>
+
+        <div class="card-body">
+
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Currency</th>
+                    <th>Order ID</th>
+                    <th>Order Number</th>
+                    <th>Contact</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.amount }}</td>
+                        <td>{{ order.currency }}</td>
+                        <td>{{ order.orderId  }}</td>
+                        <td>{{ order.orderNumber }}</td>
+                        <td>{{ order.deliverTo.contactName  }}</td>
+
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="16">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+
+        </div>
+    </div>
+    <style>
+        th {
+            font-family: 'Oswald', sans-serif;
+            color: #00a400;
+
+        }
+    </style>
+
+{% endblock %}
+
